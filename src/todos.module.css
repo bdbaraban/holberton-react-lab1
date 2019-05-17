@@ -1,0 +1,32 @@
+.container {
+    padding: 30px;
+    text-align: center;
+}
+
+.content {
+    margin: 0 auto;
+    padding: 0;
+    width: calc(60% + 50px);
+}
+
+.todoHeader {
+    margin: 0;
+    padding: 15px 0 15px 0;
+}
+
+.todoTitle {
+    border-bottom: 1px solid #9b4dca;
+}
+
+.todoList {
+    text-align: left;
+}
+
+.todo {
+    align-items: center;
+    border-bottom: 1px solid #9b4dca;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 15px 0 15px 0;
+}
