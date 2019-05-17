@@ -1,19 +1,21 @@
-import React from 'react';
-import { ITodoListItem } from 'todo-app';
+import React, { ReactElement } from 'react';
+import { TodoListItem } from 'todo-app';
 import styles from './todos.module.css';
 
-interface ITodoProps {
-  todo: ITodoListItem;
+interface TodoProps {
+  todo: TodoListItem;
   remove: (id: number) => void;
 }
 
-const Todo = ({todo, remove}: ITodoProps) => (
+const Todo = ({ todo, remove }: TodoProps): ReactElement => (
   <li className={styles['todo']}>
     {todo.text}
     <button
-     onClick={() => { remove(todo.id); }}
-     className="button"
-     style={{ margin: 0 }}
+      onClick={(): void => {
+        remove(todo.id);
+      }}
+      className="button"
+      style={{ margin: 0 }}
     >
       Todo-me-done!
     </button>

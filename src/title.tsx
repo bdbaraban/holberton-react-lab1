@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const Title =  React.memo(function todoTitle(props) {
-    return <h1>Todo-do-do's</h1>;
+const Title = React.memo(function todoTitle(): ReactElement {
+  return <h1>Todo-do-do&apos;s</h1>;
 });
 
 export default Title;

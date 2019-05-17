@@ -1,46 +1,50 @@
-import React, { Component } from 'react';
-import { ITodoListItem } from './todo-app';
+import React, { Component, ReactElement } from 'react';
+import { TodoListItem } from './todo-app';
 import styles from './todos.module.css';
 
-class AddTodo extends Component<{handleAdd: (todo: ITodoListItem) => void}, {todoText: string}> {
-
-  constructor(props: {handleAdd: (todo: ITodoListItem) => void}) {
+class AddTodo extends Component<
+  { handleAdd: (todo: TodoListItem) => void },
+  { todoText: string }
+> {
+  public constructor(props: { handleAdd: (todo: TodoListItem) => void }) {
     super(props);
     this.state = {
-      todoText: '',
+      todoText: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event: React.FormEvent<HTMLInputElement>) {
-      this.setState({
-          todoText: event.currentTarget.value
-      });
+  public handleChange(event: React.FormEvent<HTMLInputElement>): void {
+    this.setState({
+      todoText: event.currentTarget.value
+    });
   }
 
-  handleSubmit() {
-      this.props.handleAdd({
-          text: this.state.todoText,
-          id: Math.random()
-      });
-      this.setState({
-        todoText: ''
-      })
+  public handleSubmit(): void {
+    this.props.handleAdd({
+      text: this.state.todoText,
+      id: Math.random()
+    });
+    this.setState({
+      todoText: ''
+    });
   }
 
-  render() {
+  public render(): ReactElement {
     return (
       <div className={styles['content']}>
         <input
-          type='text'
+          type="text"
           value={this.state.todoText}
-          placeholder='Add todos here...'
-          autoComplete='off'
+          placeholder="Add todos here..."
+          autoComplete="off"
           onChange={this.handleChange}
         />
-        <button className='button button-outline' onClick={this.handleSubmit}> To-do-me-up! </button>
+        <button className="button button-outline" onClick={this.handleSubmit}>
+          To-do-me-up!
+        </button>
       </div>
     );
   }

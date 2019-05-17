@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, ReactElement } from 'react';
 import Title from './title';
 import AddTodo from './add-todo';
 import TodoList from './todo-list';
 import styles from './todos.module.css';
 
-export interface ITodoAppState {
-    todos: Array<ITodoListItem>;
+export interface TodoAppState {
+  todos: TodoListItem[];
 }
 
-export interface ITodoListItem {
-    text: string;
-    id: number;
-};
+export interface TodoListItem {
+  text: string;
+  id: number;
+}
 
-class TodoApp extends Component<{}, ITodoAppState> {
-  constructor(props: {}) {
+class TodoApp extends Component<{}, TodoAppState> {
+  public constructor(props: {}) {
     super(props);
 
     //initialize state - `todos` is our initial dummy array of todos
@@ -28,20 +28,22 @@ class TodoApp extends Component<{}, ITodoAppState> {
   }
 
   // Handler to add a todo
-  addTodo(todo: ITodoListItem) {
-      this.setState({
-          todos: [...this.state.todos, todo]
-      });
-  }
-
-  // Handler to remove a todo
-  removeTodo(id: number) {
+  public addTodo(todo: TodoListItem): void {
     this.setState({
-        todos: this.state.todos.filter((todo: ITodoListItem) => todo.id !== id)
+      todos: [...this.state.todos, todo]
     });
   }
 
-  render() {
+  // Handler to remove a todo
+  public removeTodo(id: number): void {
+    this.setState({
+      todos: this.state.todos.filter(
+        (todo: TodoListItem): boolean => todo.id !== id
+      )
+    });
+  }
+
+  public render(): ReactElement {
     return (
       <div className={styles['container']}>
         <Title />
